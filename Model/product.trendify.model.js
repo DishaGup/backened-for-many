@@ -143,6 +143,23 @@ module.exports = {ProductTrendifyModel };
 
 
 
-
+  "image": "https://assets.ajio.com/medias/sys_master/root/20221109/u2JJ/636b8eddaeb269659c7f91b5/-473Wx593H-462323964-white-MODEL.jpg",
+      "discount": 57,
+      "image2": "https://assets.ajio.com/medias/sys_master/root/20221109/BeoJ/636b8eddaeb269659c7f913f/-473Wx593H-462323964-white-MODEL4.jpg",
+      "title": "Polo T-shirt Collar",
+      "subcategory": "clothing",
+      "brand": "zara",
+      "price": 1223,
+      "category": "men",
+      "reviews": 47,
+      "tag": "shirt",
+      "rating": 5,
+      "userId": "645dc775f7bcb4466655fa78",
+      "userName": "admin",
+      "images": [
+        "https://assets.ajio.com/medias/sys_master/root/20221109/BeoJ/636b8eddaeb269659c7f913f/-473Wx593H-462323964-white-MODEL4.jpg",
+        "https://assets.ajio.com/medias/sys_master/root/20221109/u2JJ/636b8eddaeb269659c7f91b5/-473Wx593H-462323964-white-MODEL.jpg"
+      ]
+    }
  * 
  */
