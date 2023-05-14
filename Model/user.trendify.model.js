@@ -7,7 +7,7 @@ const userTrendifySchema = Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     age: { type: Number },
-    location:{type:String}
+    location: { type: String },
   },
   {
     versionKey: false,
@@ -17,7 +17,6 @@ const userTrendifySchema = Schema(
 const UserTrendifyModel = model("trendify_users", userTrendifySchema);
 
 module.exports = { UserTrendifyModel };
-
 
 /**
  * 
