@@ -48,8 +48,7 @@ userTrendifyRouter.post("/login", async (req, res) => {
             "shhhhh"
           );
 
-          //console.log(result, user, token);
-
+       
           res
             .status(200)
             .json({

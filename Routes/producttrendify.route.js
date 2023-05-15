@@ -150,7 +150,7 @@ productTrendifyRouter.get("/single/:id", async (req, res) => {
 
 productTrendifyRouter.get("/search", async (req, res) => {
   
-console.log(req.query)
+
 let filters={}
   if (req.query.title) {
     filters.title = { $regex: req.query.title, $options: "i" };
