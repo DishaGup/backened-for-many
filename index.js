@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const mongoose=require("mongoose")
 const { connection } = require("./Connection/connection");
 
 const { auth } = require("./MiddleWare/logintrendify.middleware");
@@ -13,6 +14,7 @@ const { cartTrendifyRouter } = require("./Routes/carttrendify.route");
 const { wishlistRouter } = require("./Routes/wishlist.route");
 
 app.use(cors());
+mongoose.set('strictQuery', false);
 app.use(express.json());
 
 app.use("/trendify/products", productTrendifyRouter);
