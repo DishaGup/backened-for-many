@@ -27,6 +27,7 @@ productTrendifyRouter.get("/all/:category?/:subcategory?/:subcat2?", async (req,
     filters.category = category;
   }
   
+  
   if (subcategory) {
     filters.subcategory = subcategory;
   }
