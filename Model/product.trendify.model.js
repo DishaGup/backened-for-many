@@ -2,29 +2,32 @@ const mongoose = require("mongoose");
 
 const ProductTrendifySchema = mongoose.Schema(
   {
-    image: { type: String,require:true },
+    image: { type: String, require: true },
     discount: { type: Number },
-    image2:{ type: String },
-    title: { type: String ,require:true},
-    subcategory: { type: String,require:true },
-    brand: { type: String,require:true },
-    price: { type: Number,require:true },
-    category: { type: String,require:true }, 
-    reviews :{type:Number},
-    tag:{type:String,require:true},
-    rating:{type:Number,require:true},
+    image2: { type: String },
+    title: { type: String, require: true },
+    subcategory: { type: String, require: true },
+    brand: { type: String, require: true },
+    price: { type: Number, require: true },
+    category: { type: String, require: true },
+    reviews: { type: Number },
+    tag: { type: String, require: true },
+    rating: { type: Number, require: true },
     userId: { type: String, required: true },
-  userName: { type: String, required: true },
-  images:Array,
-  subcat2:{type:String}
+    userName: { type: String, required: true },
+    images: Array,
+    subcat2: { type: String },
   },
   {
     versionKey: false,
   }
 );
-const ProductTrendifyModel = mongoose.model("trendify_products", ProductTrendifySchema);
+const ProductTrendifyModel = mongoose.model(
+  "trendify_products",
+  ProductTrendifySchema
+);
 
-module.exports = {ProductTrendifyModel };
+module.exports = { ProductTrendifyModel };
 
 /**
  * 
