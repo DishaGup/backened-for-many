@@ -5,6 +5,8 @@ const { connection } = require("./Connection/connection");
 
 const { auth } = require("./MiddleWare/logintrendify.middleware");
 
+const {userWrapUpRouter}=require("./Routes/Wrap-up/user.wrapup.route")
+const {TodoWrapUpRouter} =require("./Routes/Wrap-up/project.wrapup.route")
 const { productTrendifyRouter } = require("./Routes/producttrendify.route");
 const cors = require("cors");
 require("dotenv").config();
@@ -24,6 +26,18 @@ app.use("/trendify/users", userTrendifyRouter);
 app.use("/trendify/cart", auth, cartTrendifyRouter);
 
 app.use("/trendify/wishlist", auth, wishlistRouter);
+
+
+/**
+ * wrap-up routes
+ * 
+ */
+
+app.use("/wrapup/users",userWrapUpRouter );
+app.use("/wrapup/todos",TodoWrapUpRouter)
+
+
+
 
 app.listen(process.env.port, async () => {
   try {
