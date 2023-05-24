@@ -48,20 +48,19 @@ userWrapUpRouter.post("/login", async (req, res) => {
           );
 
        
-          res
-            .status(200)
+          res.status(200)
             .json({
               message: "Login Sucessful",
               token,
-              Name: user.name,
               userId: user._id,
+              user
             });
         } else {
           res.status(401).json({ message: "Wrong Credentials" });
         }
       });
     } else {
-      res.status(401).json({ message: "Wrong Credentials" });
+      res.status(401).json({ message: "Email not Registered" });
     }
   } catch (error) {
     res.status(401).json({ error: error.message });
