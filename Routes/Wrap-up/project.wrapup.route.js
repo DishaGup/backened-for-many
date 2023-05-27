@@ -1,11 +1,11 @@
 const express = require("express")
 const TodoWrapUpRouter = express.Router();
 const {TodoWrapUpModel} = require("../../Model/Wrap-up/project.wrapup.model");
-const {auth} =require("../../MiddleWare/login.wrapup.middleware")
+const {auths} =require("../../MiddleWare/login.wrapup.middleware")
 
 
 //adding the todos by admin
-TodoWrapUpRouter.post("/add",auth ,async (req, res) => {
+TodoWrapUpRouter.post("/add",auths ,async (req, res) => {
   try {
     const medi =new TodoWrapUpModel(req.body);
     await medi.save();
@@ -15,7 +15,7 @@ TodoWrapUpRouter.post("/add",auth ,async (req, res) => {
   }
 });
 
-TodoWrapUpRouter.get("/get/userdata",auth ,async (req, res) => {
+TodoWrapUpRouter.get("/get/userdata",auths ,async (req, res) => {
    // console.log(req.body,'..19')
   try {
     const medi = await TodoWrapUpModel.find({ userId: req.body.userId });
@@ -25,7 +25,7 @@ TodoWrapUpRouter.get("/get/userdata",auth ,async (req, res) => {
   }
 });
 
-TodoWrapUpRouter.patch("/update/:id",async (req, res) => {
+TodoWrapUpRouter.patch("/update/:id",auths,async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -39,7 +39,7 @@ TodoWrapUpRouter.patch("/update/:id",async (req, res) => {
 });
 
 
-TodoWrapUpRouter.delete("/delete/:id", auth,async (req, res) => {
+TodoWrapUpRouter.delete("/delete/:id", auths,async (req, res) => {
   const { id } = req.params;
   try {
     const data = await TodoWrapUpModel.findByIdAndDelete({ _id: id });
@@ -50,7 +50,7 @@ TodoWrapUpRouter.delete("/delete/:id", auth,async (req, res) => {
 });
 
 
-TodoWrapUpRouter.get("/single/:id", async (req, res) => {
+TodoWrapUpRouter.get("/single/:id", auths,async (req, res) => {
   const { id } = req.params;
 
   try {

@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const auth = (req, res, next) => {
+const auths = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     try {
@@ -11,11 +11,20 @@ const auth = (req, res, next) => {
         next();
       }
     } catch (error) {
-      res.send(error);
+      // Handle token verification errors appropriately
+      res.status(401).json({ error: "Invalid token" });
     }
   } else {
-    res.send({ msg: "Please Login" });
+    const storedToken = localStorage.getItem("token");
+    const storedUserId = localStorage.getItem("user_id");
+
+    if (storedToken && storedUserId) {
+      req.body.userId = storedUserId;
+      next();
+    } else {
+      res.status(401).json({ error: "Authentication required" });
+    }
   }
 };
 
-module.exports = { auth };
+module.exports = { auths };

@@ -4,7 +4,7 @@ const mongoose=require("mongoose")
 const { connection } = require("./Connection/connection");
 
 const { auth } = require("./MiddleWare/logintrendify.middleware");
-
+const {auths} =require("./MiddleWare/login.wrapup.middleware")
 const {userWrapUpRouter}=require("./Routes/Wrap-up/user.wrapup.route")
 const {TodoWrapUpRouter} =require("./Routes/Wrap-up/project.wrapup.route")
 const { productTrendifyRouter } = require("./Routes/producttrendify.route");
@@ -34,7 +34,7 @@ app.use("/trendify/wishlist", auth, wishlistRouter);
  */
 
 app.use("/wrapup/users",userWrapUpRouter );
-app.use("/wrapup/todos",TodoWrapUpRouter)
+app.use("/wrapup/todos",auths,TodoWrapUpRouter)
 
 
 

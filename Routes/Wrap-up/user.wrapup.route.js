@@ -3,6 +3,7 @@ const userWrapUpRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const {UserWrapUpModel} = require("../../Model/Wrap-up/user.wrapup.model");
 const bcrypt = require("bcrypt");
+const {auths} =require("../../MiddleWare/login.wrapup.middleware")
 
 //register the user
 userWrapUpRouter.post("/register", async (req, res) => {
@@ -67,32 +68,46 @@ userWrapUpRouter.post("/login", async (req, res) => {
   }
 });
 
-//get all the users
-userWrapUpRouter.get("/", async (req, res) => {
-   
-    try {
-    const users = await UserWrapUpModel.find();
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({ error });
-  }
-});
-
-userWrapUpRouter.patch("/edit/:id", async (req, res) => {
-   const{id}=req.params
+//get singleuser
+userWrapUpRouter.get("/single/:id", auths,async (req, res) => {
+   const {id}=req.params
   try {
-  const users = await UserWrapUpModel.findByIdAndUpdate({_id:id},req.body);
-  res.status(200).json(users);
+  const users = await UserWrapUpModel.find({_id:id});
+  res.status(200).json({users});
 } catch (error) {
   res.status(500).json({ error });
 }
 });
 
-userWrapUpRouter.delete("/delete/:id", async (req, res) => {
+
+
+
+//get all the users
+userWrapUpRouter.get("/", async (req, res) => {
+   
+    try {
+    const users = await UserWrapUpModel.find();
+    res.status(200).json({users});
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
+userWrapUpRouter.patch("/edit/:id", auths,async (req, res) => {
+   const{id}=req.params
+  try {
+  const users = await UserWrapUpModel.findByIdAndUpdate({_id:id},req.body);
+  res.status(200).json({users});
+} catch (error) {
+  res.status(500).json({ error });
+}
+});
+
+userWrapUpRouter.delete("/delete/:id", auths,async (req, res) => {
   const{id}=req.params
  try {
  const users = await UserWrapUpModel.findByIdAndDelete({_id:id});
- res.status(200).json(users);
+ res.status(200).json({users});
 } catch (error) {
  res.status(500).json({ error });
 }

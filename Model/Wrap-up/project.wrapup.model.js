@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const StatusEnum = Object.freeze({
     HIGH: 'high',
     LOW: 'low',
-    NO: 'no',
+    NO: 'None',
   });
 const TodoWrapUpSchema = mongoose.Schema(
   {
