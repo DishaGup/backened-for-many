@@ -21,7 +21,7 @@ productTrendifyRouter.post("/add",auth ,async (req, res) => {
 
 productTrendifyRouter.get("/all/:category?/:subcategory?/:subcat2?", async (req, res) => {
   const { category, subcategory, subcat2 } = req.params;
- // console.log( category, subcategory, subcat2)
+
   let filters = {};
 
 let uniques={}
@@ -97,7 +97,6 @@ page = Math.min(maxPage, Math.max(1, page));
 let skip = (page - 1) * pageSize;
 skip<1?skip=0:skip=skip
     const products = await ProductTrendifyModel.find(filters).sort({[sort]: value}).skip(skip).limit(pageSize);
- //   let brands= await ProductTrendifyModel.find({},{"brand":1});
     let brands = await ProductTrendifyModel.distinct("brand",uniques);
     let tag = await ProductTrendifyModel.distinct("tag",uniques);
     res.status(200).send({ products, currentPage: page, totalPages: maxPage, totalResults: total,brands,tag });
