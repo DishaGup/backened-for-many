@@ -16,7 +16,7 @@ const { cartTrendifyRouter } = require("./Routes/carttrendify.route");
 const { wishlistRouter } = require("./Routes/wishlist.route");
 
 app.use(cors());
-mongoose.set('strictQuery', false);
+// mongoose.set('strictQuery', false);
 app.use(express.json());
 
 app.use("/trendify/products", productTrendifyRouter);
