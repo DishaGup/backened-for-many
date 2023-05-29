@@ -91,7 +91,8 @@ if (req.query.brand) {
   
   try {
 
-    const total = await ProductTrendifyModel.countDocuments(filters)
+    const total = await ProductTrendifyModel.find(filters).count()
+    // const total = await ProductTrendifyModel.countDocuments(filters)
     const maxPage = Math.ceil(total / pageSize);
 page = Math.min(maxPage, Math.max(1, page)); 
 let skip = (page - 1) * pageSize;
