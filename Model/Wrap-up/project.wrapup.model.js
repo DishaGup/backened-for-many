@@ -17,6 +17,7 @@ const TodoWrapUpSchema = mongoose.Schema(
      desc:{type:String},
       userId: { type: String, required: true },
       firstname:{ type: String, required: true },
+      timecreated:{type:Date,required:true}
   },
   {
     versionKey: false,

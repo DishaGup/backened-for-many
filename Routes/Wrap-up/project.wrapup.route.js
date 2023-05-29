@@ -6,8 +6,9 @@ const {auths} =require("../../MiddleWare/login.wrapup.middleware")
 
 //adding the todos by admin
 TodoWrapUpRouter.post("/add",auths ,async (req, res) => {
+  let body={...req.body,timecreated:Date()}
   try {
-    const medi =new TodoWrapUpModel(req.body);
+    const medi =new TodoWrapUpModel(body);
     await medi.save();
     res.status(200).send("Successfully added Data");
   } catch (err) {
@@ -16,10 +17,11 @@ TodoWrapUpRouter.post("/add",auths ,async (req, res) => {
 });
 
 TodoWrapUpRouter.get("/get/userdata",auths ,async (req, res) => {
-   // console.log(req.body,'..19')
+//console.log(res.todos)
+   //console.log( Date.now()-res.todos[2].timecreated )
   try {
     const medi = await TodoWrapUpModel.find({ userId: req.body.userId });
-    res.status(200).send({ todos: medi });
+    res.status(200).send({ todos: medi,diff:(new Date-medi[3].timecreated)/86400000 });
   } catch (err) {
     res.status(400).send({ err: err.message });
   }
